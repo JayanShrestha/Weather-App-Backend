@@ -92,6 +92,26 @@ catch(err){
 }
 })
 
+app.post("/getlatlng", async (req,res)=>{
+   try{
+    var location = req.body.location; // requesting the value from location input
+   
+    const geocode = await axios.get(geoAPI_URL,{// Getting the geocode for the supplied location from geocoding api
+        params:{
+            q:location,
+            appid:geokey,
+        }
+    });
+    const response = JSON.stringify(geocode.data);// converts the JSON objects to String value
+    console.log(response);
+    const result =(geocode.data);//All the information including lattitude and longitude are received as geocode.data in the form of array
+    res.result.json();
+}
+catch(error){
+    throw new Error (`Failed to fetch coordinates: ${error.message}`);
+}
+})
+
 app.listen(port || vite_port,()=>{
     console.log(`Server is running at ${port || vite_port}`);
 });
