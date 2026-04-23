@@ -105,7 +105,7 @@ app.post("/getlatlng", async (req,res)=>{
     const response = JSON.stringify(geocode.data);// converts the JSON objects to String value
     console.log(response);
     const result =(geocode.data);//All the information including lattitude and longitude are received as geocode.data in the form of array
-    res.result.json();
+    res.json({data:result});
 }
 catch(error){
     throw new Error (`Failed to fetch coordinates: ${error.message}`);
