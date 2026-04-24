@@ -3,7 +3,7 @@
     "axios": "^1.9.0",
     "body": "^5.1.0",
     "body-parser": "^2.2.0",
-    "bootstrap": "^5.3.6",
+    "bootstrap": "^5.3.8",
     "cheerio": "^1.1.0",
     "cors": "^2.8.6",
     "dotenv": "^17.2.3",
