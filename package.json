@@ -9,7 +9,7 @@
     "dotenv": "^17.2.3",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
-    "node": "^22.16.0",
+    "node": "^24.15.0",
     "parser": "^0.1.4"
   },
   "name": "web-application",
