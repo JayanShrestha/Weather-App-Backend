@@ -1,10 +1,9 @@
-# Weather Application Using APIs
+# Weather Application Backend Using APIs
 
 ## Tech Used
 
-- EJS
 - NPM & Node JS
-- Bootstrap
+- Express JS
 
 ## Installing npm
 
@@ -54,7 +53,7 @@ git push origin master
 ```
 
 ## API Keys
-I have used my own API key for using the Openweathermap api. The api key can be generated if you sign up to Openweathermap api (https://openweathermap.org/city/2159851). After the API key is generated, export the key from utilities.js(you need to create one) file in the root folder. 
+I have used my own API key for using the Openweathermap api. The api key can be generated if you sign up to Openweathermap api (https://openweathermap.org/city/2159851). After the API key is generated, export the key from .env file and later can be added on server (Koyeb). 
 
 
 
