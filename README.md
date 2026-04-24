@@ -1,61 +1,139 @@
-# Weather Application Backend Using APIs
+<h1>🌦️ Weather App Backend — Node.js + Express + OpenWeather API</h1>
 
-## Tech Used
+This backend powers the Weather-App-Frontend by providing clean, normalized weather data from the OpenWeather API.
+It supports both city‑based and coordinate‑based weather lookups, handles geocoding, and ensures predictable responses for the frontend.
 
-- NPM & Node JS
-- Express JS
-- Koyeb for deployment
+<h2>🚀 Features</h2>
 
-## Installing npm
+- City → Weather lookup
 
-- Clone the project `https://github.com/JayanShrestha/Weather-Application.git`
-- Browse to folder `cd Weather-Application`
-- Execute the command 'npm install' in command prompt or git bash on that folder
-- Run `nodemon server.js`
-- Open http://localhost:3000 with your browser.
+- Coordinates → Weather lookup
 
-## CI/CD Workflow
+- OpenWeather Geocoding API integration
 
-After the repository is cloned and running on your local machine, the following steps need to be taken first to have your task approved and merged
+- Normalized JSON responses
 
-### 1. Create new branch
+- CORS enabled for frontend communication
 
-```bash 
-git push origin your_feature_branch
-```
+- Environment variable support
 
-### 2. Make changes to your branch
+- Error‑safe responses (never crashes the frontend)
 
-Make sure changes made to your branch runs on command ```nodemon index.js``` and check functionality and responsiveness of the website. Further testing will be added in the future.
+- Lightweight Express server
 
-### 3. Git add modified files and commit to the local repository with the following command:
+<h2>🛠️ Tech Stack</h2>
+<table>
+  <tr><th>Category</th><th>Tools</th>	</tr>
+  <tr><td>Runtime</td><td>Node.js</td>	</tr>
+  <tr><td>Framework</td>	<td>Express.js</td></tr>
+  <tr><td>HTTP Client</td><td>Axios</td>	</tr>
+  <tr><td>Environment</td><td>dotenv</td>	</tr>
+  <tr><td>CORS</td><td>cors</td>	</tr>
+  <tr><td>Weather Provider</td><td>OpenWeather API</td>	</tr>
+</table>
+
+<h2>📦 Installation</h2>
+Clone the repo:
+
 ```bash
-git add your_files
-```
-```bash
-git commit -m your_message_or_comment
-```
-### 4. Push to origin
-Push your branch to Git
-```bash
-git push origin your_feature_branch
-```
-After that navigate to the github for Weather-Application and create a pull request from your branch.
-### 5. Code Review
-A reviewer will review your code and ask to make any necessary adjustments.
-### 6. Development Iteration
-Repeat steps 2-5 until the code is approved by the reviewer.
-### 7.Merge to Master
-```bash
-git pull origin master
-git checkout master
-git merge your_feature_branch
-git push origin master
+git clone https://github.com/JayanShrestha/Weather-App-Backend.git
+cd Weather-App-Backend
 ```
 
-## API Keys
-I have used my own API key for using the Openweathermap api. The api key can be generated if you sign up to Openweathermap api (https://openweathermap.org/city/2159851). After the API key is generated, export the key from .env file and later can be added on server (Koyeb). 
+Install dependencies:
 
-## FrontEnd Repo
+```bash
+npm install
+```
+Start the server:
+
+```bash
+node index.js
+```
+Or with nodemon:
+
+```bash
+npm run dev
+```
+<h2>🔑 Environment Variables</h2>
+Create a .env file in the project root:
+
+```Code
+api_key=YOUR_OPENWEATHER_API_KEY
+key=YOUR_GOOGLE_MAPS_API_KEY
+```
+
+<h2>📁 API Endpoints</h2>
+1. POST /curweather
+Get weather by city name.
+
+Request body:
+
+```json
+{
+  "location": "Sydney"
+}
+```
+Response:
+```json
+{
+  "data": { ...OpenWeather forecast data... }
+}
+```
+2. POST /corweather
+Get weather by coordinates.
+
+Request body:
+
+```json
+{
+  "latitude": -33.8688,
+  "longitude": 151.2093
+}
+```
+Response:
+
+```json
+{
+  "data": { ...OpenWeather forecast data... }
+}
+```
+<h2>🧩 Project Structure</h2>
+
+```Code
+.
+├── public/
+├── index.js
+├── package.json
+├── .env
+└── README.md
+```
+
+<h2>⚠️ Error Handling</h2>
+The backend:
+
+- Logs errors to the console
+
+- Returns { error: "message" } instead of crashing
+
+- Ensures the frontend always receives a valid JSON response
+
+<h2>🌐 CORS Configuration</h2>
+CORS is enabled for all origins:
+
+```js
+cors({
+  origin: "*",
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
+})
+```
+<h2>🤝 Contributing</h2>
+Pull requests are welcome.
+For major changes, please open an issue first to discuss what you’d like to modify.
+
+📄 License
+MIT License.
+
+<h2>Weather Application Frontend </h2>
 <a href="https://github.com/JayanShrestha/Weather-App-Frontend">Link for Repo</a>
-
