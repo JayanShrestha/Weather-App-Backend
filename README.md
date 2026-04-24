@@ -4,13 +4,14 @@
 
 - NPM & Node JS
 - Express JS
+- Koyeb for deployment
 
 ## Installing npm
 
 - Clone the project `https://github.com/JayanShrestha/Weather-Application.git`
 - Browse to folder `cd Weather-Application`
 - Execute the command 'npm install' in command prompt or git bash on that folder
-- Run `nodemon index.js`
+- Run `nodemon server.js`
 - Open http://localhost:3000 with your browser.
 
 ## CI/CD Workflow
@@ -55,6 +56,6 @@ git push origin master
 ## API Keys
 I have used my own API key for using the Openweathermap api. The api key can be generated if you sign up to Openweathermap api (https://openweathermap.org/city/2159851). After the API key is generated, export the key from .env file and later can be added on server (Koyeb). 
 
+## FrontEnd Repo
+<a href="https://github.com/JayanShrestha/Weather-App-Frontend">Link for Repo</a>
 
-
-# Weather-App-Backend
