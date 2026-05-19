@@ -3,6 +3,9 @@ import { fetchByLocation, fetchByCoordinates, fetchlatlng } from "../services/we
 export async function getWeatherByLocation(req, res){
     try{
         const location = req.body.location;
+        if(!location || typeof location !== "string"){
+            return res.status(400).json({ error: "Invalid location input" });
+        }
         const weatherData = await fetchByLocation(location);
         res.json({data: weatherData});
 
@@ -17,6 +20,9 @@ export async function getWeatherByLocation(req, res){
 export async function getWeatherByCoordinates(req, res){
     try{
         const { latitude, longitude } = req.body;
+        if(!latitude || typeof latitude !== "number" || !longitude || typeof longitude !== "number"){
+            return res.status(400).json({ error: "Invalid coordinates input" });
+        }
         const weatherData = await fetchByCoordinates(latitude, longitude);
         res.json({data: weatherData});
     }

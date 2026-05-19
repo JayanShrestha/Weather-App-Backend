@@ -3,7 +3,7 @@ import env from "dotenv";
 
 env.config();
 const weatherAPI_URL = "https://api.openweathermap.org/data/2.5/forecast";
-const geoAPI_URL = "http://api.openweathermap.org/geo/1.0/direct";
+const geoAPI_URL = "https://api.openweathermap.org/geo/1.0/direct";
 const geokey = process.env.api_key;
 
 export async function fetchByLocation(location){
@@ -16,6 +16,9 @@ try{
         }
     });
     const result =(geocode.data);//All the information including lattitude and longitude are received as geocode.data in the form of array
+    if(!Array.isArray(result) || result.length === 0){
+        throw new Error("No location found");
+    }
     console.log(result[0].name);
     var latitude = result[0].lat;
     var longitude = result[0].lon;
@@ -67,9 +70,7 @@ export async function fetchlatlng(location){
         }
     });
     const response = JSON.stringify(geocode.data);// converts the JSON objects to String value
-    console.log(response);
-    const result =(geocode.data);//All the information including lattitude and longitude are received as geocode.data in the form of array
-    return {data: result};
+    return result;
 }
 catch(error){
     throw new Error (`Failed to fetch coordinates: ${error.message}`);

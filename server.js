@@ -5,7 +5,7 @@ import weatherRoutes from "./src/routes/weather.routes.js";
 
 const app = express();
 app.use(cors());
-const port = 3000;
+const port = process.env.PORT || 3000;
 app.use(express.static("public"));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,6 +18,6 @@ app.use(cors({
 
 app.use("/", weatherRoutes);
 
-app.listen(port || vite_port,()=>{
-    console.log(`Server is running at ${port || vite_port}`);
+app.listen(port,()=>{
+    console.log(`Server is running at ${port}`);
 });
