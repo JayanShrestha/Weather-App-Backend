@@ -70,7 +70,7 @@ export async function fetchlatlng(location){
         }
     });
     const response = JSON.stringify(geocode.data);// converts the JSON objects to String value
-    return result;
+    return response;
 }
 catch(error){
     throw new Error (`Failed to fetch coordinates: ${error.message}`);
