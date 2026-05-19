@@ -4,7 +4,6 @@ import env from "dotenv";
 env.config();
 const weatherAPI_URL = "https://api.openweathermap.org/data/2.5/forecast";
 const geoAPI_URL = "http://api.openweathermap.org/geo/1.0/direct";
-const googleAPIKey = process.env.key;
 const geokey = process.env.api_key;
 
 export async function fetchByLocation(location){
@@ -17,7 +16,6 @@ try{
         }
     });
     const result =(geocode.data);//All the information including lattitude and longitude are received as geocode.data in the form of array
-    console.log(result);
     console.log(result[0].name);
     var latitude = result[0].lat;
     var longitude = result[0].lon;
@@ -32,13 +30,11 @@ try{
             
         }
     });
-    
-    console.log(weather_details.data);
-    res.json({data:weather_details.data});// rendering the landing page with all the weather details and googleAPI key
+    return(weather_details.data);// rendering the landing page with all the weather details and googleAPI key
 }
 catch(error){
   console.log("Failed to make connection:", error.message);
-  res.render({error:error.message})
+  throw new Error(`Failed to fetch weather data: ${error.message}`);
 }
 };
 
@@ -54,11 +50,11 @@ export async function fetchByCoordinates(latitude, longitude){
             units:"metric", //temperature comes in celsius 
         }
     });
-    res.json({data:weather_details.data});
+    return(weather_details.data);
 }
 catch(err){
     console.log("Failed to make connection:", err.message);
-    res.json({error:err.message});
+    throw new Error(`Failed to fetch weather data: ${err.message}`);
 }
 }
 
@@ -73,7 +69,7 @@ export async function fetchlatlng(location){
     const response = JSON.stringify(geocode.data);// converts the JSON objects to String value
     console.log(response);
     const result =(geocode.data);//All the information including lattitude and longitude are received as geocode.data in the form of array
-    res.json({data:result});
+    return {data: result};
 }
 catch(error){
     throw new Error (`Failed to fetch coordinates: ${error.message}`);
